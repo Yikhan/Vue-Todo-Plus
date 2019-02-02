@@ -1,6 +1,4 @@
 const path = require('path')
-const VueLoaderPlugin = require('vue-loader/lib/plugin')
-const HTMLPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const MiniExtractPlugin = require('mini-css-extract-plugin')
@@ -45,7 +43,8 @@ if (isDev) {
        plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin()
-       ]
+       ],
+       mode: 'development'
     })
 
 } else {
@@ -79,6 +78,7 @@ if (isDev) {
       plugins: [
         new MiniExtractPlugin({filename: 'styles.[contentHash:8].css'})
       ],
+      mode: 'production',
       optimization: {
         splitChunks: {
           chunks: 'async',
