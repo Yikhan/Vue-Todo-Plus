@@ -8,12 +8,12 @@
 </template>
 
 <script>
-import vHeader from './todo/header.vue'
-import vFooter from './todo/footer.jsx'
-import vTodo from './todo/todo.vue'
+import vHeader from './views/layout/header.vue'
+import vFooter from './views/layout/footer.jsx'
+import vTodo from './views/todo/todo.vue'
 
 export default {
-  components: {
+  components: { 
       vHeader,
       vFooter,
       vTodo,

@@ -10,6 +10,11 @@ const HTMLPlugin = require('html-webpack-plugin')
 const isDev = process.env.NODE_ENV === 'development'
 
 const defaultPlugins = [
+  new webpack.DefinePlugin({
+    'process.env': {
+      NODE_ENV: isDev ? '"development"' : '"production"'
+    }
+  }),
   new VueLoaderPlugin(),
   new HTMLPlugin(),
 ]
@@ -64,7 +69,7 @@ if (isDev) {
         vendor: ['vue']
       },
       output: {
-        filename: '[name].[chunkhash:8].js',
+        filename: '[name].[hash:8].js',
       },
       module: {
         rules: [
@@ -87,7 +92,8 @@ if (isDev) {
       },
       plugins: defaultPlugins.concat([
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoEmitOnErrorsPlugin()
+        new webpack.NoEmitOnErrorsPlugin(),
+        new MiniExtractPlugin({filename: 'styles.[contentHash:8].css'}),
        ]),
       mode: 'production',
       optimization: {
