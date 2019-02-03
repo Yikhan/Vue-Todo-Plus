@@ -3,8 +3,18 @@ const webpack = require('webpack')
 const merge = require('webpack-merge')
 const MiniExtractPlugin = require('mini-css-extract-plugin')
 const baseConfig = require('./webpack.config.base')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const HTMLPlugin = require('html-webpack-plugin')
+
 // detect the env mode
 const isDev = process.env.NODE_ENV === 'development'
+
+const defaultPlugins = [
+  new VueLoaderPlugin(),
+  new HTMLPlugin(),
+]
+
+
 // 定义运行时的服务器
 const devServer =  {
   port: 8000,
@@ -40,10 +50,10 @@ if (isDev) {
         ]
        },
        devServer,
-       plugins: [
+       plugins: defaultPlugins.concat([
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin()
-       ],
+       ]),
        mode: 'development'
     })
 
@@ -75,9 +85,10 @@ if (isDev) {
           }
         ]
       },
-      plugins: [
-        new MiniExtractPlugin({filename: 'styles.[contentHash:8].css'})
-      ],
+      plugins: defaultPlugins.concat([
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NoEmitOnErrorsPlugin()
+       ]),
       mode: 'production',
       optimization: {
         splitChunks: {
