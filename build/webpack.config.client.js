@@ -42,7 +42,16 @@ if (isDev) {
             test: /\.styl(us)?$/,
             use: [
                 'vue-style-loader',
-                'css-loader',
+                {
+                  loader: 'css-loader',
+                  options: {
+                    modules: true,
+                    localIdentName: '[local]_[hash:base64:5]',
+                    camelCase: true
+                  }
+
+                },
+                
                 {
                     loader: 'postcss-loader',
                     options: {
