@@ -13,5 +13,4 @@
     opacity 0.8
     font-weight 100
     margin 20px
-
 </style>
