@@ -3,5 +3,8 @@
   "plugins": [
     "html"
   ],
-  "parser": "vue-eslint-parser"
+  "parser": "vue-eslint-parser",
+  "rules": {
+    "no-new": "off"
+  }
 }
