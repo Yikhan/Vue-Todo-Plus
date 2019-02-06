@@ -1,20 +1,20 @@
 <template>
     <section class="real-app">
-      <input 
+      <input
         type = "text"
         class = "add-input"
         autofocus = "autofocus"
         placeholder = "What to do next?"
         @keyup.enter = "addTodo"
       />
-    <vItem 
+    <vItem
       :todo="todo"
       v-for="todo in filterTodos"
       :key="todo.id"
       @del="deleteTodo"
     />
-    <vTabs 
-      :tabSelected="tabSelected" 
+    <vTabs
+      :tabSelected="tabSelected"
       :todos="todos"
       @toggle="toggleTab"
       @clearCompleted='clearCompleted'
@@ -25,19 +25,19 @@
 <script>
 import vItem from './item.vue'
 import vTabs from './tabs.vue'
-let id = 0;
+let id = 0
 export default {
   components: {
     vItem, vTabs
   },
-  data() {
+  data () {
     return {
       todos: [],
       tabSelected: 'all'
     }
   },
   computed: {
-    filterTodos() {
+    filterTodos () {
       if (this.tabSelected === 'all') {
         return this.todos
       }
@@ -46,25 +46,25 @@ export default {
     }
   },
   methods: {
-    addTodo(e) {
+    addTodo (e) {
       this.todos.unshift({
         id: id++,
         content: e.target.value.trim(),
-        completed: false,
+        completed: false
       })
       // clear field after each input
-      e.target.value = ""
+      e.target.value = ''
     },
-    deleteTodo(id) {
-      console.log("try delete index ", id)
+    deleteTodo (id) {
+      console.log('try delete index ', id)
       this.todos.splice(this.todos.findIndex(todo => todo.id === id), 1)
     },
-    toggleTab(state) {
+    toggleTab (state) {
       this.tabSelected = state
     },
-    clearCompleted() {
+    clearCompleted () {
       this.todos = this.todos.filter(todo => !todo.completed)
-    },
+    }
   }
 }
 </script>
@@ -74,7 +74,7 @@ export default {
   width 600px
   margin auto
   box-shadow 0 0 5px #666
-.add-input 
+.add-input
   position: relative;
   margin: 0;
   width: 100%;
@@ -94,5 +94,3 @@ export default {
   border: none;
   box-shadow: inset 0 -2px 1px rgba(0, 0, 0, 0.03);
 </style>
-
-

@@ -20,37 +20,37 @@ export default {
   props: {
     tabSelected: {
       type: String,
-      required: true,
+      required: true
     },
     todos: {
       type: Array,
-      required: true,
+      required: true
     }
   },
-  data() {
+  data () {
     return {
       states: ['all', 'active', 'completed']
     }
   },
   computed: {
-    unCompletedItemsLength() {
+    unCompletedItemsLength () {
       return this.todos.filter(todo => !todo.completed).length
-    },
+    }
   },
   methods: {
-    clearCompleted() {
+    clearCompleted () {
       this.$emit('clearCompleted')
     },
-    toggleTab(state) {
+    toggleTab (state) {
       this.$emit('toggle', state)
-    },
-    
+    }
+
   }
 }
 </script>
 
 <style lang="stylus" scoped>
-.helper 
+.helper
   font-weight 100
   display flex
   justify-content space-between
@@ -67,7 +67,7 @@ export default {
   width 150px
 .left
   text-align left
-.clear 
+.clear
   text-align: right
   cursor pointer
 .tabs
@@ -78,9 +78,8 @@ export default {
     display inline-block
     padding 0 10px
     cursor pointer
-    border 1px solid rgba(175, 47, 47, 0) 
+    border 1px solid rgba(175, 47, 47, 0)
     &.selected
       border-color rgba(175, 47, 47, 0.5)
       border-radius 10px
 </style>
-

@@ -13,17 +13,17 @@ import vFooter from './views/layout/footer.jsx'
 import vTodo from './views/todo/todo.vue'
 
 export default {
-  components: { 
-      vHeader,
-      vFooter,
-      vTodo,
+  components: {
+    vHeader,
+    vFooter,
+    vTodo
   }
 }
 </script>
 
 <style lang="stylus" scoped>
 #app
-    position absolute 
+    position absolute
     left 0
     right 0
     top 0
@@ -38,4 +38,3 @@ export default {
         opacity .1
         z-index -1
 </style>
-

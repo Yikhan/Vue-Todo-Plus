@@ -1,6 +1,6 @@
 <template>
     <div :class="['todo-item', todo.completed ? 'completed' : '']">
-      <input 
+      <input
         type="checkbox"
         class="toggle"
         v-model="todo.completed"
@@ -15,11 +15,11 @@ export default {
   props: {
     todo: {
       type: Object,
-      required: true,
+      required: true
     }
   },
   methods: {
-    deleteTodo() {
+    deleteTodo () {
       this.$emit('del', this.todo.id)
     }
   }
@@ -47,7 +47,7 @@ export default {
       label
         color: #d9d9d9
         text-decoration line-through
-  input 
+  input
       text-align: center
       width: 40px
       height: 40px
@@ -62,7 +62,7 @@ export default {
           content url('../../assets/images/round.svg')
       &:checked:after
           content url('../../assets/images/done.svg')
-  button 
+  button
       position: absolute
       top: 0
       right: 10px
@@ -80,4 +80,3 @@ export default {
       cursor pointer
       outline none
 </style>
-
