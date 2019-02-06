@@ -40,29 +40,47 @@ if (isDev) {
         rules: [
           {
             test: /\.styl(us)?$/,
-            use: [
-                'vue-style-loader',
-                {
-                  loader: 'css-loader',
-                  options: {
-                    modules: true,
-                    localIdentName: '[local]_[hash:base64:5]',
-                    camelCase: true
-                  }
-
-                },
-                
-                {
+            oneOf: [  
+              // 这里匹配 `<style module>`
+              {
+                resourceQuery: /module/,
+                use: [
+                  'vue-style-loader',
+                  {
+                    loader: 'css-loader',
+                    options: {
+                      modules: true,
+                      localIdentName: isDev ? '[local]_[hash:base64:5]' : '[hash:base64:5]',
+                      camelCase: true
+                    }
+                  },
+                  {
                     loader: 'postcss-loader',
                     options: {
                         sourceMap: true,
                     }
-                },
-                'stylus-loader'
+                  },
+                  'stylus-loader'
+                ]
+              },
+              // 这里匹配普通的 `<style>` 或 `<style scoped>`
+              {
+                use: [
+                  'vue-style-loader',
+                  'css-loader',
+                  {
+                      loader: 'postcss-loader',
+                      options: {
+                          sourceMap: true,
+                      }
+                  },
+                  'stylus-loader'
+                ]
+              }
             ]
-          }
+          },
         ]
-       },
+      },
        devServer,
        plugins: defaultPlugins.concat([
         new webpack.HotModuleReplacementPlugin(),
