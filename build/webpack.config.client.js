@@ -16,7 +16,9 @@ const defaultPlugins = [
     }
   }),
   new VueLoaderPlugin(),
-  new HTMLPlugin(),
+  new HTMLPlugin({
+    template: path.join(__dirname, 'template.html')
+  })
 ]
 
 
@@ -28,7 +30,10 @@ const devServer =  {
       errors: true
   },
   //open: true,
-  hot: true
+  hot: true,
+  historyApiFallback: {
+    index: '/public/index.html'
+  }
 }
 
 let config
@@ -40,7 +45,7 @@ if (isDev) {
         rules: [
           {
             test: /\.styl(us)?$/,
-            oneOf: [  
+            oneOf: [
               // 这里匹配 `<style module>`
               {
                 resourceQuery: /module/,

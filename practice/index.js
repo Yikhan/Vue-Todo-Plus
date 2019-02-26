@@ -2,4 +2,4 @@
 // import './lifecycle'
 // import './data-binding'
 // import './computed'
-import './define'
+import './component'
