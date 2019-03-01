@@ -19,6 +19,7 @@
       @toggle="toggleTab"
       @clearCompleted='clearCompleted'
     />
+    <!-- <router-view/> -->
     </section>
 </template>
 

@@ -3,7 +3,11 @@
         <div id="cover"></div>
         <vHeader></vHeader>
         <!--<vTodo></vTodo>-->
-        <router-view/>
+        <router-link :to="{name: 'app'}">app</router-link>
+        <router-link to="login">login</router-link>
+        <transition name="fade">
+          <router-view/>
+        </transition>
         <vFooter></vFooter>
     </div>
 </template>
@@ -36,6 +40,6 @@ export default {
         top 0
         bottom 0
         background-color #999
-        opacity .1
+        opacity .5
         z-index -1
 </style>

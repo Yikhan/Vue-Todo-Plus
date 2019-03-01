@@ -10,7 +10,7 @@ const config = {
     output: {
         filename: 'bundle.[hash:8].js',
         path: path.join(__dirname, '../dist'),
-        //publicPath: '/public/'
+        publicPath: '/' // 不设置的话路由children会失效 要告诉路由从根部开始查找
     },
     module: {
         rules: [
