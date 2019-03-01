@@ -3,8 +3,8 @@
         <div id="cover"></div>
         <vHeader></vHeader>
         <!--<vTodo></vTodo>-->
-        <router-link :to="{name: 'app'}">app</router-link>
-        <router-link to="login">login</router-link>
+        <router-link to="/app">app</router-link>
+        <router-link :to="{name: 'login'}">login</router-link>
         <transition name="fade">
           <router-view/>
         </transition>

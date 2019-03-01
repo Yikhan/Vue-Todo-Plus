@@ -17,7 +17,7 @@ export default () => {
       if (savedPosition) {
         return savedPosition
       } else {
-        return {x:0, y:0} // 回到页面最左上
+        return { x: 0, y: 0 } // 回到页面最左上
       }
     },
 

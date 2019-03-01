@@ -4,15 +4,24 @@ import Login from '../views/login/login.vue'
 export default [
   {
     path: '/',
-    redirect: '/app'
+    redirect: '/app/start'
   },
   {
     path: '/app',
-    component: Todo,
+    redirect: '/app/start',
     name: 'app',
+  },
+  {
+    path: '/app/:id',
+    props: true, // 自动解析并传url参数给组件
+    component: Todo,
     meta: {
       title: 'this is app',
       description: 'app page'
+    },
+    beforeEnter (to, from, next) {
+      console.log('app route before enter')
+      next()
     },
     // children: [
     //   {
@@ -23,6 +32,7 @@ export default [
   },
   {
     path: '/login',
-    component: Login
+    component: Login,
+    name: 'login'
   }
 ]

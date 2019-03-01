@@ -28,9 +28,29 @@ import vItem from './item.vue'
 import vTabs from './tabs.vue'
 let id = 0
 export default {
+  // 注意这里拿不到this 因为还没有进入组件
+  beforeRouteEnter (to, from, next) {
+    console.log('before entering todo')
+    next(vm => {
+      console.log('parameter passed in vm is: ', vm.id)
+
+    })
+  },
+  // 同路径有参数变化是触发 这样就不用watch观测参数了
+  beforeRouteUpdate (to, from, next) {
+    console.log('before updating todo')
+    next()
+  },
+  beforeRouteLeave (to, from, next) {
+    console.log('before leaving todo')
+    // if (window.confirm('Are you sure?')){
+    //   next()
+    // }
+  },
   components: {
     vItem, vTabs
   },
+  props: ['id'],
   data () {
     return {
       todos: [],
