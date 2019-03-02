@@ -1,5 +1,5 @@
-import Todo from '../views/todo/todo.vue'
-import Login from '../views/login/login.vue'
+// import Todo from '../views/todo/todo.vue'
+// import Login from '../views/login/login.vue'
 
 export default [
   {
@@ -14,7 +14,10 @@ export default [
   {
     path: '/app/:id',
     props: true, // 自动解析并传url参数给组件
-    component: Todo,
+
+    // 异步加载模块 节省开支
+    component: () => import('../views/todo/todo.vue'),
+    // 其他的变量放在meta里面
     meta: {
       title: 'this is app',
       description: 'app page'
@@ -32,7 +35,7 @@ export default [
   },
   {
     path: '/login',
-    component: Login,
+    component: () => import('../views/login/login.vue'),
     name: 'login'
   }
 ]

@@ -15,13 +15,13 @@
 <script>
 import vHeader from './views/layout/header.vue'
 import vFooter from './views/layout/footer.jsx'
-import vTodo from './views/todo/todo.vue'
+// import vTodo from './views/todo/todo.vue'
 
 export default {
   components: {
     vHeader,
     vFooter,
-    vTodo
+    //vTodo
   }
 }
 </script>

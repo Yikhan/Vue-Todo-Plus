@@ -43,9 +43,11 @@ export default {
   },
   beforeRouteLeave (to, from, next) {
     console.log('before leaving todo')
+    // 这里可以增加离开前的各种确认或处理
     // if (window.confirm('Are you sure?')){
     //   next()
     // }
+    next()
   },
   components: {
     vItem, vTabs
