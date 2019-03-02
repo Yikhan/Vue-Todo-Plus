@@ -33,7 +33,6 @@ export default {
     console.log('before entering todo')
     next(vm => {
       console.log('parameter passed in vm is: ', vm.id)
-
     })
   },
   // 同路径有参数变化是触发 这样就不用watch观测参数了
@@ -44,7 +43,7 @@ export default {
   beforeRouteLeave (to, from, next) {
     console.log('before leaving todo')
     // 这里可以增加离开前的各种确认或处理
-    // if (window.confirm('Are you sure?')){
+    // if (global.confirm('Are you sure?')){
     //   next()
     // }
     next()

@@ -3,6 +3,7 @@
         <div id="cover"></div>
         <vHeader></vHeader>
         <!--<vTodo></vTodo>-->
+        <p>{{fullName}} {{counter}}</p>
         <router-link to="/app">app</router-link>
         <router-link :to="{name: 'login'}">login</router-link>
         <transition name="fade">
@@ -13,6 +14,11 @@
 </template>
 
 <script>
+import {
+  mapState,
+  mapGetters
+} from 'vuex'
+
 import vHeader from './views/layout/header.vue'
 import vFooter from './views/layout/footer.jsx'
 // import vTodo from './views/todo/todo.vue'
@@ -20,8 +26,31 @@ import vFooter from './views/layout/footer.jsx'
 export default {
   components: {
     vHeader,
-    vFooter,
-    //vTodo
+    vFooter
+    // vTodo
+  },
+  mounted () {
+    console.log(this.$store)
+    let i = 1
+    setInterval(() => {
+      this.$store.commit('updateCounter', i++)
+    }, 1000)
+  },
+  computed: {
+    // ...mapState(['count']), //可以直接用数组解析
+    // 如果要改变state变量名字则用对象
+    ...mapState({
+      counter: (state) => state.count
+    }),
+
+    // count() {
+    //   return this.$store.state.count
+    // },
+
+    ...mapGetters(['fullName'])
+    // fullName () {
+    //   return this.$store.getters.fullName
+    // }
   }
 }
 </script>
