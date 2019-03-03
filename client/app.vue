@@ -16,7 +16,9 @@
 <script>
 import {
   mapState,
-  mapGetters
+  mapGetters,
+  mapActions,
+  mapMutations
 } from 'vuex'
 
 import vHeader from './views/layout/header.vue'
@@ -31,10 +33,22 @@ export default {
   },
   mounted () {
     console.log(this.$store)
-    let i = 1
-    setInterval(() => {
-      this.$store.commit('updateCounter', i++)
-    }, 1000)
+    // 触发mutations
+    // let i = 1
+    // setInterval(() => {
+    //   this.$store.commit('updateCounter', i++)
+    // }, 1000)
+
+    // 触发actions
+    // this.$store.dispatch('updateCounterAsync',
+    // { num: 5,
+    //   time: 2000
+    // })'
+    // 使用map之后的简便写法
+    this.updateCounterAsync({
+      num: 10,
+      time: 2000
+    })
   },
   computed: {
     // ...mapState(['count']), //可以直接用数组解析
@@ -51,6 +65,10 @@ export default {
     // fullName () {
     //   return this.$store.getters.fullName
     // }
+  },
+  methods: {
+    ...mapActions(['updateCounterAsync']),
+    ...mapMutations(['updateCounter'])
   }
 }
 </script>
