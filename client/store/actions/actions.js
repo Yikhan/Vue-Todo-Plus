@@ -2,7 +2,7 @@
 
 export default {
   updateCounterAsync (store, data) {
-    setTimeout( () => {
+    setTimeout(() => {
       store.commit('updateCounter', data.num)
     }, data.time)
   }

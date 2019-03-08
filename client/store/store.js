@@ -13,6 +13,10 @@ export default () => {
     state: defaultState,
     mutations,
     getters,
-    actions
+    actions,
+    // Vuex的模块化功能
+    modules: {
+
+    }
   })
 }
