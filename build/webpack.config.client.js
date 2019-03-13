@@ -5,6 +5,7 @@ const MiniExtractPlugin = require('mini-css-extract-plugin')
 const baseConfig = require('./webpack.config.base')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const HTMLPlugin = require('html-webpack-plugin')
+const VueClientPlugin = require('vue-server-renderer/client-plugin')
 
 // detect the env mode
 const isDev = process.env.NODE_ENV === 'development'
@@ -18,7 +19,8 @@ const defaultPlugins = [
   new VueLoaderPlugin(),
   new HTMLPlugin({
     template: path.join(__dirname, 'template.html')
-  })
+  }),
+  new VueClientPlugin()
 ]
 
 

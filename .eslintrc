@@ -10,6 +10,7 @@
     "allowImportExportEverywhere": false
   },
   "rules": {
-    "no-new": "off"
+    "no-new": "off",
+    "linebreak-style": ["error", "windows"]
   }
 }
